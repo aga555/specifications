@@ -1,5 +1,6 @@
 package specification.demo;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,13 @@ class UserSpecificationTest {
         user2.setName("jan");
         user2.setLastName("mak");
         userRepositorySpec.save(user2);
+    }
+
+    @AfterEach
+    void tearDown() {
+        userRepositorySpec.delete(user);
+        userRepositorySpec.delete(user2);
+
     }
 
     @Test
